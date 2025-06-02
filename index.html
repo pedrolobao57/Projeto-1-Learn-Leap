@@ -1,23 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn Leap</title>
-    <link rel="stylesheet" href="css/myStyles.css">
-    <link rel="shortcut icon" href="img/favicon.png">
-</head>
-<body>
-    <section>
-        <div class="wave" id="wave1" style="--i:1"></div>
-        <div class="wave" id="wave2" style="--i:2"></div>
-        <div class="wave" id="wave3" style="--i:3"></div>
-        <div class="wave" id="wave4" style="--i:4"></div>
+    <link rel="stylesheet" href="css/myStyles.css" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+  </head>
+  <body>
+    <header>
+      <img src="img/Learn_Leap_W1.png" alt="Learn Leap Logo" class="logo" />
+      <h1 class="title">Learn Leap</h1>
+    </header>
+
+    <div class="hero">
+      <div class="heroContent">
+        <div class="image">
+          <img src="img/HeroImg.png" alt="Hero Image" />
+        </div>
+        <div class="cta">
+          <h3 class="ctaText">
+            Leap beyond your limits with <br />
+            high quality professionals!
+          </h3>
+          <button class="registerBtn">get started!</button>
+          <button class="loginBtn">log in</button>
+        </div>
+      </div>
+    </div>
+
+<!-- secção de animação das ondas, com delay para ficarem desfazadas -->
+
+    <section>       
+      <div class="wave" id="wave1" style="--delay: 1"></div> 
+      <div class="wave" id="wave2" style="--delay: 2"></div>
+      <div class="wave" id="wave3" style="--delay: 3"></div>
+      <div class="wave" id="wave4" style="--delay: 4"></div>
     </section>
     <div class="w">
-        <h2>Unlock Your Potential!</h2>
-        <p>Our qualified teachers provide you personalized one on one support to help you excel in any subject!</p>
-    </div>  
-    <script src="js/view/FirstPageView.js"></script>              
-</body>
+        <div class="wContent">
+            <div class="text">
+                <h3 class="subtitle">Unlock Your Potential!</h2>
+                <p class="text">
+                 Our qualified teachers provide you <br> personalized one on one support to <br>
+                 help you excel in any subject!
+                </p>
+            </div>
+            <div class="image">
+                <img src="img/Features1.png" alt="">
+            </div>
+            
+            <div class="image">
+                <img src="img/Features2.png" alt="">
+            </div>
+            <div class="text">
+                <h3 class="subtitle">Master any subject with ease.</h2>
+                <p class="text">
+                 Explore a wide range of subjects and 
+                 skills with our diverse tutoring options. 
+                 Learn Leap offers comprehensive 
+                 support to help you excel in every area.
+                </p>
+            </div>
+            
+
+            <div class="text">
+                <h3 class="subtitle">Flexible Online and In-Person Tutoring</h2>
+                <p class="text">
+                 Enjoy the convenience of online lessons from anywhere, 
+                 or opt for in-person sessions for a face-to-face experience.
+                </p>
+            </div>
+            <div class="image">
+                <img src="img/Features3.png" alt="">
+            </div>
+            
+            <div class="image">
+                <img src="img/Features4.png" alt="">
+            </div>
+            <div class="text">
+                <h3 class="subtitle">Earn while you learn.</h2>
+                <p class="text">
+                 Earn points for attending lessons, completing assignments, 
+                 and achieving milestones. Redeem your points for exclusive perks, discounts, and more.
+                </p>
+            </div>
+            
+
+            <div class="text">
+                <h3 class="subtitle">Success Stories from Learn Leap alumni</h2>
+                <p class="text">
+                Discover how Learn Leap has helped students achieve their academic goals here. 
+                Their journeys can inspire you to reach new heights in your learning experience.
+                </p>
+            </div>
+            <div class="image">
+                <img src="img/Features5.png" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="js/view/FirstPageView.js"></script>
+  </body>
 </html>
