@@ -12,6 +12,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #2286ff;
+    
 }
 
 header {
@@ -242,3 +243,4 @@ header img {
   max-width: 250px;
   height : auto;
 }
+
