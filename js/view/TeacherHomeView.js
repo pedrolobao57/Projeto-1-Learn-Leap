@@ -87,3 +87,24 @@ document.getElementById("nextMonth").onclick = () => {
 
 // Init
 renderCalendar(currentMonth, currentYear);
+
+// Profile picture menu
+
+document.addEventListener("DOMContentLoaded", () => {
+  const avatar = document.getElementById("avatar");
+  const rightPanel = document.getElementById("rightPanel");
+
+  avatar.addEventListener("click", () => {
+    rightPanel.innerHTML = `
+      <div class="menu-panel">
+        <h2>Hello, Nome</h2>
+        <ul>
+          <li>Settings</li>
+          <li>Change Account</li>
+          <li>Log Out</li>
+        </ul>
+        <img src="https://via.placeholder.com/200x120?text=Thank+You+Teacher" alt="Thank You Image" />
+      </div>
+    `;
+  });
+});
