@@ -1,0 +1,206 @@
+:root {
+  --primary-color: #2286ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "chillax", sans-serif;
+  background: #2286ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1.5px solid #2286ff;
+  border-radius: 0.25rem;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Progressbar */
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin: 2rem 0 4rem;
+}
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: -1;
+}
+
+.progress {
+  background-color: #2286ff;
+  width: 0%;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.progress-step {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+}
+
+.progress-step::after {
+  content: attr(data-title);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.progress-step-active {
+  background-color: #2286ff;
+  color: #f3f3f3;
+}
+
+.form {
+
+  width: clamp(320px, 30%, 430px);
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.form-step {
+  display: none;
+
+}
+
+.form-step-active {
+  display: block;
+}
+
+.input-group {
+  padding: 2% 0 ;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/* Button */
+.btns-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.btn {
+  padding: 0.75rem;
+  display: block;
+  text-decoration: none;
+  background-color: #2286ff;
+  color: #f3f3f3;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 1.5rem;
+
+}
+.btn:hover {
+  scale: 1.05;
+}
+
+.wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("/img/wave.png");
+  background-size: 1000px 100px;
+  animation: animate 4s ease-in-out infinite;
+  animation-delay: calc(var(--delay) * 0.25s);
+  z-index: -1;
+}
+
+.wave#wave1 {
+  z-index: 950;
+  opacity: 1;
+  background-position-x: 400px;
+}
+
+.wave#wave2 {
+  z-index: 949;
+  opacity: 0.5;
+  background-position-x: 300px;
+}
+
+.wave#wave3 {
+  z-index: 948;
+  opacity: 0.25;
+  background-position-x: 200px;
+}
+
+.wave#wave4 {
+  z-index: 947;
+  opacity: 0.7;
+  background-position-x: 100px;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
