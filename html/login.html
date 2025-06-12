@@ -1,157 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn Leap</title>
-  <link rel="stylesheet" href="/css/myStyles.css" />
-  <link rel="shortcut icon" href="/img/favicon.png" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    @import url('https://fonts.cdnfonts.com/css/chillax');
-    @import url('https://fonts.cdnfonts.com/css/montserrat');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Leap</title>
+    <link rel="stylesheet" href="/css/myStyles.css" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="custom-container">
+      <div class="custom-card">
+        <div class="image-side">
+          <img src="/img/login.png" alt="Login Illustration" width="100%" />
+        </div>
 
-    body {
-      background-color: #f8f9fa;
-      font-family: 'Montserrat', sans-serif;
-    }
+        <div class="form-side">
+          <h3 class="form-heading">Time To Learn</h3>
 
-    .step {
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      border-radius: 50%;
-      background-color: #ccc;
-      text-align: center;
-      color: white;
-      margin: 0 auto;
-    }
+          <form class="Hero_form">
+            <div class="form-group">
+              <label for="Email" class="form-label">Email</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="Email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="Password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="lastName"
+                placeholder="Password"
+              />
+            </div>
+            <button type="button" class="submit-btn">Log in</button>
 
-    .step.active {
-      background-color: #2286ff;
-    }
-
-    .line {
-      height: 2px;
-      background-color: #ccc;
-      flex: 1;
-      margin-top: 20px;
-    }
-
-    .step-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 40px;
-      padding: 0 50px;
-    }
-
-    .Hero_Label {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .card {
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .WAVES {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .Hero_text {
-      color: #2286ff;
-      text-align: center;
-    }
-
-    .btn {
-      background-color: #2286ff;
-      font-weight: bold;
-      font-family: 'Montserrat';
-    }
-
-    .txt {
-      font-size: 10px;
-      text-align: center;
-      color: #2286ff;
-    }
-
-    .Hero_form {
-      padding-right: 10%;
-    }
-
-    
-
-    .image-side {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-    }
-
-    .image-side img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    @media (max-width: 768px) {
-      .image-side {
-        display: none;
-      }
-    }
-  </style>
-</head>
-<body>
-  <section class="WAVES">
-    <div class="wave" id="wave1" style="--delay: 1"></div>
-    <div class="wave" id="wave2" style="--delay: 2"></div>
-    <div class="wave" id="wave3" style="--delay: 3"></div>
-    <div class="wave" id="wave4" style="--delay: 4"></div>
-  </section>
-
-  
-  <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
-    <div class="row shadow rounded overflow-hidden w-75 bg-white">
-
-    
-      <div class="col-md-6 image-side p-4">
-        <img src="/img/login.png" alt="Login Illustration" width="500px" />
-      </div>
-
-
-      <div class="col-md-6 p-4">
-        <h3 class="text-white bg-primary p-3 rounded text-center">Time To Learn</h3>
-        
-
-        <form class="Hero_form">
-          <div class="mb-3">
-            <label for="Email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Email" />
-          </div>
-          <div class="mb-3">
-            <label for="Password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="lastName" placeholder="Password" />
-          </div>
-          <button type="button" class="btn btn-primary w-100">Log in</button>
-
-          <br><br>
-          <a href="register.html"><p class="Hero_text">I don't have an account!</p></a>
-          <p class="txt">
-            By signing up you agree with our Terms & Conditions and Privacy Policy.<br>
-            Google Privacy Policy and Terms & Conditions apply.
-          </p>
-        </form>
+            <br /><br />
+            <a href="register.html"
+              ><p class="Hero_text">I don't have an account!</p></a
+            >
+            <p class="txt">
+              By signing up you agree with our Terms & Conditions and Privacy
+              Policy.<br />
+              Google Privacy Policy and Terms & Conditions apply.
+            </p>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+
+    <section>
+      <div class="wave" id="wave1" style="--delay: 1"></div>
+      <div class="wave" id="wave2" style="--delay: 2"></div>
+      <div class="wave" id="wave3" style="--delay: 3"></div>
+      <div class="wave" id="wave4" style="--delay: 4"></div>
+    </section>
+  </body>
 </html>

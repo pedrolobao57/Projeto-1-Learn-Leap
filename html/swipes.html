@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/swipesStyle.css">
-</head>
-<body>
-
-  <div class="swipes" id="card-stack">
-    <div class="card">
-      <img src="https://via.placeholder.com/300x160" alt="Teacher 1" />
-      <div class="card-body">
-        <h5 class="card-title">Nome</h5>
-        <p class="card-text">Descrição</p>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/swipesStyle.css" />
+  </head>
+  <body>
+    <div class="swipes" id="card-stack">
+      <div class="card">
+        <div class="card-main">
+          <img id="card-img" src="/img/pfp.jpg" alt="Teacher 1" />
+          <div class="card-text-container">
+            <h5 class="card-title">Nome</h5>
+            <p class="card-price"> <i class="fa-solid fa-coins" style="color: #2286ff;"></i>Preço</p>
+            <p class="card-time"> <i class="fa-solid fa-user-graduate" style="color: #2286ff;"></i>Time</p>
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item"> <i class="fa-solid fa-book" style="color: #2286ff;"></i>Disciplina</li>
+          <li class="list-group-item"> <i class="fa-solid fa-map-marker-alt" style="color: #2286ff;"></i>Local</li>
+          <li class="list-group-item"> <i class="fa-solid fa-chalkboard-teacher fa-2xs" style="color: #2286ff;"></i>Model</li>
+          <li class="list-group-item"> <i class="fa-solid fa-clock" style="color: #2286ff;"></i>Availability</li>
+          <li class="list-group-item"> <i class="fa-solid fa-info-circle" style="color: #2286ff;"></i>Descrição</li>
+        </ul>
+        <div class="buttons">
+          <button class="btn decline"> <i class="fa-solid fa-xmark"></i></button>
+          <button class="btn accept"> <i class="fa-solid fa-check"></i></button>
+        </div>
       </div>
-      <ul class="list-group">
-        <li class="list-group-item">Disciplina </li>
-        <li class="list-group-item"> Local</li>
-        <li class="list-group-item"> Model</li>
-        <li class="list-group-item">Availability</li>
-        <li class="list-group-item">Price</li>
-      </ul>
-      <div class="buttons">
-        <button class="btn decline">❌</button>
-        <button class="btn accept">✔️</button>
+
+      <div class="card">
+        <div class="card-main">
+          <img id="card-img" src="/img/pfp.jpg" alt="Teacher 2" />
+          <div class="card-text-container">
+            <h5 class="card-title">Nome</h5>
+            <p class="card-price"> <i class="fa-solid fa-coins" style="color: #2286ff;"></i>Preço</p>
+            <p class="card-time"> <i class="fa-solid fa-user-graduate" style="color: #2286ff;"></i>Time</p>
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item"> <i class="fa-solid fa-book" style="color: #2286ff;"></i>Disciplina</li>
+          <li class="list-group-item"> <i class="fa-solid fa-map-marker-alt" style="color: #2286ff;"></i>Local</li>
+          <li class="list-group-item"> <i class="fa-solid fa-chalkboard-teacher" style="color: #2286ff;"></i>Model</li>
+          <li class="list-group-item"> <i class="fa-solid fa-clock" style="color: #2286ff;"></i>Availability</li>
+          <li class="list-group-item"> <i class="fa-solid fa-info-circle" style="color: #2286ff;"></i>Descrição</li>
+        </ul>
+        <div class="buttons">
+          <button class="btn decline"> <i class="fa-solid fa-xmark"></i></button>
+          <button class="btn accept"> <i class="fa-solid fa-check"></i></button>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x160" alt="Teacher 2" />
-       <div class="card-body">
-        <h5 class="card-title">Nome</h5>
-        <p class="card-text">Descrição</p>
-      </div>
-      <ul class="list-group">
-        <li class="list-group-item">Disciplina </li>
-        <li class="list-group-item"> Local</li>
-        <li class="list-group-item"> Model</li>
-        <li class="list-group-item">Availability</li>
-        <li class="list-group-item">Price</li>
-      </ul>
-      <div class="buttons">
-        <button class="btn decline">❌</button>
-        <button class="btn accept">✔️</button>
-      </div>
-    </div>
-  </div>
+    <section>
+      <div class="wave" id="wave1" style="--delay: 1"></div>
+      <div class="wave" id="wave2" style="--delay: 2"></div>
+      <div class="wave" id="wave3" style="--delay: 3"></div>
+      <div class="wave" id="wave4" style="--delay: 4"></div>
+    </section>
 
-
-<script src="/js/view/SwipeView.js"></script>
-</body>
+    <script src="/js/view/SwipeView.js"></script>
+  </body>
 </html>
