@@ -144,28 +144,3 @@ body {
   border-radius: 6px;
   font-size: 13px;
 }
-
-.menu-panel {
-  text-align: center;
-  padding-top: 40px;
-}
-
-.menu-panel h2 {
-  margin-bottom: 20px;
-}
-
-.menu-panel ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.menu-panel ul li {
-  margin: 10px 0;
-  cursor: pointer;
-}
-
-.menu-panel img {
-  max-width: 80%;
-  border-radius: 10px;
-}
