@@ -46,6 +46,16 @@ function updateProgressbar() {
     ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 }
 
+// Dropdown functionality for subjects
+document.querySelectorAll(".dropdown-item").forEach((item) => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
+    const selectedText = this.getAttribute("data-value");
+    document.getElementById("dropdownSubjects").textContent = selectedText;
+
+    dropdownButton.classList.remove("dropdown-toggle");
+  });
+});
 let wave1 = document.getElementById("wave1");
 let wave2 = document.getElementById("wave2");
 let wave3 = document.getElementById("wave3");
