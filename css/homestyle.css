@@ -278,3 +278,91 @@ h2 {
   color: #2286FF;
   font-weight: bold;
 }
+
+/*Student*/
+
+.main-container {
+  padding-top: 20px;
+  padding-right: 100px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.students-card {
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  background: #ccc;
+  border-radius: 8px;
+}
+
+.student-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.subject-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.subject-info img {
+  width: 16px;
+  height: 16px;
+}
+
+.student-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.next-session {
+  font-size: 14px;
+}
+
+.next-session span {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.text-button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.text-button img {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+}
