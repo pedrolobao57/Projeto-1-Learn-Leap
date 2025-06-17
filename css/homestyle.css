@@ -144,3 +144,34 @@ body {
   border-radius: 6px;
   font-size: 13px;
 }
+
+/* Mid Section */
+
+.main-content {
+  flex: 1;
+  background-color: #1e90ff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+#home {
+  display: block;
+}
+
+#profile {
+  display: none;
+}
+#messages {
+  display: none;
+}

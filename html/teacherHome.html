@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="/img/favicon.png">
 </head>
 <body>
-    <!-- Left Navbar -->
+  <!-- Left Navbar -->
   <div class="sidebar">
     
     <!-- Logo -->
@@ -18,16 +18,24 @@
 
     <!-- Navigation Icons -->
     <div class="nav-icons">
-      <button><img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home" /></button>
-      <button><img src="https://img.icons8.com/ios-filled/50/user.png" alt="Person" /></button>
-      <button><img src="https://img.icons8.com/ios-filled/50/speech-bubble.png" alt="Chat" /></button>
+      <div class="icon" onclick="showSection('home')"><button><img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home"></button></div>
+      <div class="icon" onclick="showSection('profile')"><button><img src="https://img.icons8.com/ios-filled/50/user.png" alt="Person"></button></div>
+      <div class="icon" onclick="showSection('messages')"><button><img src="https://img.icons8.com/ios-filled/50/speech-bubble.png" alt="Chat"></button></div>
     </div>
 
     <!-- Clock -->
     <div class="clock" id="clock">--:--</div>
   </div>
 
-   <!-- Right Panel -->
+  <!-- Mid Section-->
+
+  <div class="main-content">
+    <div id="home" class="content-section">Home Content</div>
+    <div id="profile" class="content-section" style="display:none;">Profile Content</div>
+    <div id="messages" class="content-section" style="display:none;">Messages Content</div>
+  </div>
+
+  <!-- Right Panel -->
   <div class="right-panel">
     
     <!-- User Greeting -->
