@@ -1,9 +1,8 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Chillax', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Chillax", sans-serif;
 }
 
 body {
@@ -28,7 +27,7 @@ body {
 
 /* Logo */
 .logo img {
-  width:60px;
+  width: 60px;
   height: 60px;
 }
 
@@ -127,7 +126,7 @@ body {
 }
 
 .calendar-grid .today {
-  background-color: #2286FF;
+  background-color: #2286ff;
   color: white;
   border-radius: 50%;
 }
@@ -149,7 +148,7 @@ body {
 
 .main-content {
   flex: 1;
-  background-color: #2286FF;
+  background-color: #2286ff;
   color: white;
   display: flex;
   justify-content: center;
@@ -174,10 +173,10 @@ body {
 }
 
 .middle-section {
-  background-color: #2286FF;
+  background-color: #2286ff;
   color: white;
   padding: 20px;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   border-radius: 10px;
   width: 100%;
   max-width: 800px;
@@ -192,7 +191,8 @@ h2 {
 
 /*Session*/
 
-.nextsession-card, .quote-card {
+.nextsession-card,
+.quote-card {
   background: white;
   color: black;
   padding: 15px;
@@ -251,7 +251,7 @@ h2 {
 /*Quote*/
 
 .quote-card {
- display: grid;
+  display: grid;
   grid-template-columns: 1fr auto;
   background: white;
   color: black;
@@ -275,7 +275,7 @@ h2 {
 }
 
 .highlight {
-  color: #2286FF;
+  color: #2286ff;
   font-weight: bold;
 }
 
@@ -283,7 +283,7 @@ h2 {
 
 .main-container {
   padding-top: 20px;
-  padding-right: 100px;
+  padding-right: 140px;
 }
 
 h1 {

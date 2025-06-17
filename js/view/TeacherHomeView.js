@@ -4,8 +4,8 @@ function updateClock() {
   let minutes = now.getMinutes();
 
   // Add leading zero
-  hours = hours < 10 ? '0' + hours : hours;
-  minutes = minutes < 10 ? '0' + minutes : minutes;
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
 
   const timeString = `${hours}:${minutes}`;
   document.getElementById("clock").textContent = timeString;
@@ -24,8 +24,18 @@ dateEl.textContent = today.toDateString();
 const grid = document.querySelector(".calendar-grid");
 const monthEl = document.getElementById("calendarMonth");
 const months = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 let currentMonth = today.getMonth();
@@ -33,7 +43,7 @@ let currentYear = today.getFullYear();
 
 function renderCalendar(month, year) {
   // Clear previous days
-  grid.querySelectorAll(".day").forEach(el => el.remove());
+  grid.querySelectorAll(".day").forEach((el) => el.remove());
 
   // First day of the month
   const firstDay = new Date(year, month, 1).getDay(); // 0 = Sunday
@@ -88,20 +98,16 @@ document.getElementById("nextMonth").onclick = () => {
 // Init
 renderCalendar(currentMonth, currentYear);
 
-
 //Mid Section
 
 function showSection(sectionId) {
-  const sections = document.querySelectorAll('.content-section');
-  sections.forEach(section => {
-    section.style.display = 'none';
+  const sections = document.querySelectorAll(".content-section");
+  sections.forEach((section) => {
+    section.style.display = "none";
   });
 
   const activeSection = document.getElementById(sectionId);
   if (activeSection) {
-    activeSection.style.display = 'block';
+    activeSection.style.display = "block";
   }
 }
-
-//Student List
-
