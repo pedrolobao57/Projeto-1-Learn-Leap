@@ -404,3 +404,17 @@ h4 {
   font-family: "chillax", sans-serif;
   font-weight: 600;
 }
+
+.settings-container{
+  font-family: "Montserrat";
+    width: 75%;
+    padding: 30px;
+    border: 2px solid #c1c1c1;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 20px auto;
+}
+.pfp{
+  padding-top: 100px;
+}
