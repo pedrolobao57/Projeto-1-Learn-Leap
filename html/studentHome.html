@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Learn Leap</title>
+    <link rel="stylesheet" href="/css/homestyle.css">
+    <link rel="shortcut icon" href="/img/favicon.png">
+</head>
+<body>
+  <!-- Left Navbar -->
+  <div class="sidebar">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <img src="/img/favicon.png" alt="Logo" />
+    </div>
+
+    <!-- Navigation Icons -->
+    <div class="nav-icons">
+      <div class="icon" onclick="showSection('home')"><button><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="Home"></button></div>
+      <div class="icon" onclick="showSection('profile')"><button><img src="https://img.icons8.com/?size=100&id=14736&format=png&color=000000" alt="Person"></button></div>
+    </div>
+
+    <!-- Clock -->
+    <div class="clock" id="clock">--:--</div>
+  </div>
+
+  <!-- Mid Section-->
+
+  <div class="main-content">
+    <div id="home" class="content-section">
+      <div class="middle-section">
+      
+      <!--Next Session-->
+
+       <h2>Next Session</h2>
+       <div class="nextsession-card">
+        <p>You have a session at <span class="highlight">10:30</span> with:</p>
+        <div class="nextsession-details">
+         <span class="label">User</span>
+         <div class="avatar"></div>
+        </div>
+       </div>
+      
+      <!--Your Students-->
+
+       <h2>Your Students</h2>
+       <div class="students">
+        <div class="student-card">
+         <span class="subject">Maths</span>
+         <div class="student-avatar"></div>
+         <p class="next-session">Next Session: <br> <span class="highlight">January 1</span></p>
+        </div>
+        <div class="student-card">
+         <span class="subject">Maths</span>
+         <div class="student-avatar"></div>
+         <p class="next-session">Next Session: <br> <span class="highlight">January 1</span></p>
+        </div>
+        <div class="student-card">
+         <span class="subject">Maths</span>
+         <div class="student-avatar"></div>
+         <p class="next-session">Next Session: <br> <span class="highlight">January 1</span></p>
+        </div>
+       </div>
+      
+      <!--Quote of the Day-->
+
+       <h2>Quote of the day</h2>
+       <div class="quote-card">
+        <p>"A good teacher can inspire <span class="highlight">hope</span>, ignite the <span class="highlight">imagination</span>, and instill a <span class="highlight">love</span> of learning." <br> – <strong>Joe Hendry</strong></p>
+        <img class="thank-you-img" src="/img/thankyou.png" alt="Thank You Teacher">
+       </div>
+      </div>
+     </div>
+
+      <!-- Students List -->
+
+      <div id="profile" class="content-section" style="display:none;">
+       <div class="main-container">
+        <h1>Students</h1>
+        <div class="students-card">
+         <div class="student-info">
+          <div class="profile-img"></div>
+          <div class="student-details">
+            <strong>User</strong>
+            <div class="subject-info">
+              <img src="https://img.icons8.com/?size=100&id=41414&format=png&color=2286ff" alt="book icon">
+              <span>Maths</span>
+              <img src="https://img.icons8.com/?size=100&id=3685&format=png&color=2286ff" alt="globe icon">
+              <span>Online</span>
+            </div>
+          </div>
+         </div>
+        <div class="student-actions">
+          <div class="next-session">Next Session: <span>January 1</span></div>
+          <button class="text-button">
+            <img src="https://img.icons8.com/?size=100&id=59753&format=png&color=ffffff" alt="Chat"> Text
+          </button>
+          <button class="text-button">
+            <img src="https://img.icons8.com/?size=100&id=238Ts6gRDGws&format=png&color=ffffff" alt="Call"> Call
+          </button>
+        </div>
+      </div>
+
+      <div class="students-card">
+        <div class="student-info">
+          <div class="profile-img"></div>
+          <div class="student-details">
+            <strong>User</strong>
+            <div class="subject-info">
+              <img src="https://img.icons8.com/?size=100&id=41414&format=png&color=2286ff" alt="book icon">
+              <span>Maths</span>
+              <img src="https://img.icons8.com/?size=100&id=3685&format=png&color=2286ff" alt="globe icon">
+              <span>Online</span>
+            </div>
+          </div>
+        </div>
+        <div class="student-actions">
+          <div class="next-session">Next Session: <span>January 1</span></div>
+          <button class="text-button">
+            <img src="https://img.icons8.com/?size=100&id=59753&format=png&color=ffffff" alt="text icon"> Text
+          </button>
+          <button class="text-button">
+            <img src="https://img.icons8.com/?size=100&id=238Ts6gRDGws&format=png&color=ffffff" alt="Call"> Call
+          </button>
+        </div>
+      </div>
+       </div>
+      </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    
+    <!-- User Greeting -->
+    <div class="user-header">
+      <div>
+        <p class="greeting">Hello, User</p>
+        <p class="date" id="date-display"></p>
+      </div>
+      <div class="avatar_right" id="avatarButton">
+        <img src="/img/avatar.jpg" alt="User Avatar" />
+      </div>
+    </div>
+    <div class="sidebar-menu" id="sidebarMenu">
+    <p>Hello, Nome</p>
+    <ul>
+      <li>Settings</li>
+      <li>Log Out</li>
+    </ul>
+  </div>
+
+    <!-- Calendar -->
+    <div class="calendar">
+      <div class="calendar-header">
+        <button id="prevMonth">&lt;</button>
+        <span id="calendarMonth">January 2022</span>
+        <button id="nextMonth">&gt;</button>
+      </div>
+      <div class="calendar-grid">
+        <div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div><div>SUN</div>
+      </div>
+    </div>
+
+    <!-- Upcoming Sessions -->
+    <div class="sessions">
+      <h3>Approaching Sessions</h3>
+      <div class="session-card">
+        <strong>Maths with: Nome</strong>
+        <p>January 1 · 10:30 · In 5 minutes</p>
+      </div>
+      <div class="session-card">
+        <strong>Chemistry with: Nome</strong>
+        <p>January 13 · 12:30 · 2 days left</p>
+      </div>
+      <div class="session-card">
+        <strong>Maths with: Nome</strong>
+        <p>January 5 · 13:30 · 5 days left</p>
+      </div>
+    </div>
+
+  <script src="/js/view/StudentHomeView.js"></script>
+</body>
+</html>
