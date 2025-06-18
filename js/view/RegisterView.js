@@ -5,16 +5,56 @@ const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
 
+// Show custom alert box
+function showAlert(message) {
+  const alertBox = document.getElementById("customAlert");
+  const alertMessage = document.getElementById("customAlertMessage");
+  const alertClose = document.getElementById("customAlertClose");
+
+  alertMessage.textContent = message;
+  alertBox.classList.remove("hidden");
+
+  alertClose.onclick = function () {
+    alertBox.classList.add("hidden");
+  };
+}
+
 let formStepsNum = 0;
 
+//Need to fill all required fields before moving to the next step
 nextBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    formStepsNum++;
-    updateFormSteps();
-    updateProgressbar();
+    const currentStep = formSteps[formStepsNum];
+    const requiredInputs = currentStep.querySelectorAll("input, select, textarea");
+
+    let allFilled = true;
+
+    requiredInputs.forEach(input => {
+      if (
+        input.type !== "checkbox" &&
+        input.type !== "radio" &&
+        input.hasAttribute("required") &&
+        !input.value.trim()
+      ) {
+        allFilled = false;
+        input.classList.add("is-invalid"); 
+      } else {
+        input.classList.remove("is-invalid");
+      }
+    });
+
+    if (allFilled) {
+      formStepsNum++;
+      updateFormSteps();
+      updateProgressbar();
+    } else {
+      showAlert("Please fill in all required fields before continuing.");
+    }
   });
 });
 
+
+// Making the form steps navigable
 prevBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     formStepsNum--;
@@ -23,6 +63,7 @@ prevBtns.forEach((btn) => {
   });
 });
 
+//update the progress bar based on the current step
 function updateFormSteps() {
   formSteps.forEach((formStep) => {
     formStep.classList.contains("form-step-active") &&
@@ -58,6 +99,8 @@ document.querySelectorAll('.dropdown-menu').forEach(menu => {
   });
 });
 
+
+// Update the availability button label based on selected checkboxes
 const dropdownButton = document.getElementById('dropdownDays');
 const checkboxes = document.querySelectorAll('.dropdown-menu input[type="checkbox"]');
 
@@ -85,13 +128,22 @@ document.querySelectorAll('.day-option').forEach(item => {
 
     const checkbox = this.querySelector('input[type="checkbox"]');
 
-    // Toggle only if the click wasn't directly on the checkbox
-    if (e.target !== checkbox) {
-      checkbox.checked = !checkbox.checked;
-      checkbox.dispatchEvent(new Event('change'));
-    }
   });
 });
+
+// Function to change the form based on account type
+function setupFormView(accountType) {
+  const priceGroup = document.getElementById("priceGroup");
+
+  if (accountType === "student" && priceGroup) {
+    priceGroup.style.display = "none";
+  }
+}
+
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type") || "teacher";
+
+setupFormView(type);
 
 // Wave animation on scroll
 let wave1 = document.getElementById("wave1");

@@ -16,7 +16,7 @@ function init() {
 function setupDropdown(buttonId, inputId) {
   const button = document.getElementById(buttonId);
   const input = document.getElementById(inputId);
-  if (!button || !input) return; // safeguard
+  if (!button || !input) return; 
 
   const menu = button.nextElementSibling;
 
@@ -42,7 +42,7 @@ function saveAccount() {
   const location = document.getElementById("locationInput").value;
   const price = document.getElementById("price").value;
 
-  // Get checked days *inside* the function so it’s fresh
+
 const dayCheckboxes = document.querySelectorAll(
   'input[type="checkbox"]:checked'
 );
@@ -69,9 +69,9 @@ const days = Array.from(dayCheckboxes).map((cb) => cb.value);
   accounts.push(account);
   localStorage.setItem(key, JSON.stringify(accounts));
 
-  alert("Account saved!"); // teste
-
 }
+
+
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -83,4 +83,35 @@ document.addEventListener("DOMContentLoaded", () => {
       saveAccount();
     });
   }
+});
+
+function login() {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  const teacherAccounts = JSON.parse(localStorage.getItem("teacherAccounts")) || [];
+  const studentAccounts = JSON.parse(localStorage.getItem("studentAccounts")) || [];
+  const allAccounts = [...teacherAccounts, ...studentAccounts];
+
+  const user = allAccounts.find(acc => acc.email === email && acc.password === password);
+
+  const messageDiv = document.getElementById("loginMessage");
+
+  if (user) {
+// Save logged-in user in localStorage
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+
+    messageDiv.style.color = "green";
+    messageDiv.textContent = `Welcome back, ${user.name}!`;
+
+
+  } else {
+    messageDiv.style.color = "red";
+    messageDiv.textContent = "Invalid email or password.";
+  }
+}
+
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  login();
 });

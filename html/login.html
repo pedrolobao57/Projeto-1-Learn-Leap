@@ -21,13 +21,13 @@
         <div class="form-side">
           <h3 class="form-heading">Time To Learn</h3>
 
-          <form class="Hero_form">
+          <form class="Hero_form" id="loginForm">
             <div class="form-group">
               <label for="Email" class="form-label">Email</label>
               <input
                 type="text"
                 class="form-control"
-                id="firstName"
+                id="loginEmail"
                 placeholder="Email"
               />
             </div>
@@ -36,14 +36,14 @@
               <input
                 type="password"
                 class="form-control"
-                id="lastName"
+                id="loginPassword"
                 placeholder="Password"
               />
             </div>
             <button type="button" class="submit-btn">Log in</button>
 
             <br /><br />
-            <a href="register.html"
+            <a href="choice.html"
               ><p class="bottom_text">I don't have an account!</p></a
             >
             <p class="disclaimer">
@@ -62,5 +62,6 @@
       <div class="wave" id="wave3" style="--delay: 3"></div>
       <div class="wave" id="wave4" style="--delay: 4"></div>
     </section>
+        <script src="/js/model/UserModel.js"></script>
   </body>
 </html>
