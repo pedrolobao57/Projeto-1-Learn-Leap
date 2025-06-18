@@ -111,3 +111,19 @@ function showSection(sectionId) {
     activeSection.style.display = "block";
   }
 }
+
+// Avatar
+
+const avatarButton = document.getElementById("avatarButton");
+const sidebarMenu = document.getElementById("sidebarMenu");
+
+avatarButton.addEventListener("click", () => {
+  sidebarMenu.style.display =
+    sidebarMenu.style.display === "block" ? "none" : "block";
+});
+
+window.addEventListener("click", function (e) {
+  if (!avatarButton.contains(e.target) && !sidebarMenu.contains(e.target)) {
+    sidebarMenu.style.display = "none";
+  }
+});

@@ -99,7 +99,44 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  cursor: pointer;
 }
+
+.sidebar-menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 180px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  display: none;
+  z-index: 100;
+  border-radius: 10px;
+}
+
+.sidebar-menu p {
+  margin: 0;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar-menu li:hover {
+  background-color: #f0f0f0;
+}
+
 /* Calendar */
 .calendar {
   margin-top: 20px;
