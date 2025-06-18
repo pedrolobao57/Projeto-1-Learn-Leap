@@ -1,160 +1,225 @@
-const prevBtns = document.querySelectorAll(".btn-prev");
-const nextBtns = document.querySelectorAll(".btn-next");
-const finishBtns = document.querySelectorAll(".btn-finish");
-const progress = document.getElementById("progress");
-const formSteps = document.querySelectorAll(".form-step");
-const progressSteps = document.querySelectorAll(".progress-step");
+export default class RegisterView {
+  constructor(accountType) {
+    this.accountType = accountType;
+    this.currentStep = 0;
+    this.formSteps = document.querySelectorAll(".form-step");
+    this.progressSteps = document.querySelectorAll(".progress-step");
 
-// Show custom alert box
-function showAlert(message) {
-  const alertBox = document.getElementById("customAlert");
-  const alertMessage = document.getElementById("customAlertMessage");
-  const alertClose = document.getElementById("customAlertClose");
+    this.nextBtns = document.querySelectorAll(".btn-next");
+    this.prevBtns = document.querySelectorAll(".btn-prev");
+    this.registerBtn = document.getElementById("registerBtn");
 
-  alertMessage.textContent = message;
-  alertBox.classList.remove("hidden");
+    this.setupEventListeners();
+    this.setupDropdowns();
+    this.updateDaysSelected();
+    this.updateDaysButtonLabel();
 
-  alertClose.onclick = function () {
-    alertBox.classList.add("hidden");
-  };
-}
+    this.setupFormView();
+  }
 
-let formStepsNum = 0;
+  // hides the form steps and shows the current step
+  updateFormSteps() {
+    this.formSteps.forEach((formStep) => {
+      formStep.classList.remove("form-step-active");
+    });
 
-//Need to fill all required fields before moving to the next step
-nextBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const currentStep = formSteps[formStepsNum];
-    const requiredInputs = currentStep.querySelectorAll("input, select, textarea");
+    this.formSteps[this.currentStep].classList.add("form-step-active");
+  }
 
-    let allFilled = true;
-
-    requiredInputs.forEach(input => {
-      if (
-        input.type !== "checkbox" &&
-        input.type !== "radio" &&
-        input.hasAttribute("required") &&
-        !input.value.trim()
-      ) {
-        allFilled = false;
-        input.classList.add("is-invalid"); 
+  // updates the progress bar based on the current step and makes sure the width is set correctly
+  updateProgressbar() {
+    this.progressSteps.forEach((progressStep, idx) => {
+      if (idx <= this.currentStep) {
+        progressStep.classList.add("progress-step-active");
       } else {
-        input.classList.remove("is-invalid");
+        progressStep.classList.remove("progress-step-active");
       }
     });
 
-    if (allFilled) {
-      formStepsNum++;
-      updateFormSteps();
-      updateProgressbar();
-    } else {
-      showAlert("Please fill in all required fields before continuing.");
+    const progress = document.getElementById("progress");
+    const activeSteps = Array.from(this.progressSteps).filter((step) =>
+      step.classList.contains("progress-step-active")
+    );
+
+    if (progress && this.progressSteps.length > 1) {
+      progress.style.width =
+        ((activeSteps.length - 1) / (this.progressSteps.length - 1)) * 100 +
+        "%";
     }
-  });
-});
+  }
+  setupEventListeners() {
+    // Next button for step navigation
+    this.nextBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
 
+        const currentStepEl = this.formSteps[this.currentStep];
+        const requiredInputs = currentStepEl.querySelectorAll(
+          "input, select, textarea"
+        );
 
-// Making the form steps navigable
-prevBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    formStepsNum--;
-    updateFormSteps();
-    updateProgressbar();
-  });
-});
+        let allFilled = true;
 
-//update the progress bar based on the current step
-function updateFormSteps() {
-  formSteps.forEach((formStep) => {
-    formStep.classList.contains("form-step-active") &&
-      formStep.classList.remove("form-step-active");
-  });
+        requiredInputs.forEach((input) => {
+          if (
+            input.type !== "checkbox" &&
+            input.type !== "radio" &&
+            input.hasAttribute("required") &&
+            !input.value.trim()
+          ) {
+            allFilled = false;
+            input.classList.add("is-invalid");
+          } else {
+            input.classList.remove("is-invalid");
+          }
+        });
 
-  formSteps[formStepsNum].classList.add("form-step-active");
-}
+        // Check if password match
+        if (this.currentStep === 0) {
+          const password = document.getElementById("password")?.value;
+          const confirmPassword =
+            document.getElementById("confirmPassword")?.value;
 
-function updateProgressbar() {
-  progressSteps.forEach((progressStep, idx) => {
-    if (idx < formStepsNum + 1) {
-      progressStep.classList.add("progress-step-active");
-    } else {
-      progressStep.classList.remove("progress-step-active");
-    }
-  });
+          if (password !== confirmPassword) {
+            this.showAlert("Passwords do not match.");
+            return;
+          }
+        }
 
-  const progressActive = document.querySelectorAll(".progress-step-active");
-
-  progress.style.width =
-    ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
-}
-
-// Dropdown functionality for the buttons
-document.querySelectorAll('.dropdown-menu').forEach(menu => {
-  menu.querySelectorAll('.dropdown-item').forEach(item => {
-    item.addEventListener('click', event => {
-      const value = item.getAttribute('data-value');
-      const button = menu.previousElementSibling;
-      button.textContent = value;
+        if (allFilled) {
+          this.changeStep(this.currentStep + 1);
+        } else {
+          this.showAlert(
+            "Please fill in all required fields before continuing."
+          );
+        }
+      });
     });
-  });
-});
 
+    // Previous button for step navigation
+    this.prevBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.changeStep(this.currentStep - 1);
+      });
+    });
 
-// Update the availability button label based on selected checkboxes
-const dropdownButton = document.getElementById('dropdownDays');
-const checkboxes = document.querySelectorAll('.dropdown-menu input[type="checkbox"]');
+    // Make sure the days checkboxes update the selected days
+    document.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+      cb.addEventListener("change", () => {
+        this.updateDaysSelected();
+        this.updateDaysButtonLabel();
+      });
+    });
+  }
+  // Update the current step and progress bar
+  changeStep(step) {
+    if (step < 0 || step >= this.formSteps.length) return;
 
-function updateDayButtonLabel() {
-  const checkedDays = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+    this.currentStep = step;
+    this.updateFormSteps();
+    this.updateProgressbar();
+  }
 
-  if (checkedDays.length === 0) {
-    dropdownButton.textContent = 'Choose Days';
-  } else if (checkedDays.length === 1) {
-    dropdownButton.textContent = checkedDays[0];
-  } else {
-    dropdownButton.textContent = `${checkedDays.length} days selected`;
+  // Makes the data value of the dropdowns the text content of the button
+  setupDropdowns() {
+    const dropdowns = [
+      ["dropdownLocation", "locationInput"],
+      ["dropdownLevel", "levelInput"],
+      ["dropdownClasses", "classesInput"],
+      ["dropdownSubjects", "subjectsInput"],
+    ];
+
+    dropdowns.forEach(([buttonId, inputId]) => {
+      const button = document.getElementById(buttonId);
+      const input = document.getElementById(inputId);
+      if (!button || !input) return;
+
+      const menu = button.nextElementSibling;
+
+      menu.querySelectorAll("a.dropdown-item").forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          input.value = item.getAttribute("data-value");
+          button.textContent = item.textContent.trim();
+        });
+      });
+    });
+  }
+
+  // Updates the button text for the days dropdown based on selected checkboxes
+  updateDaysButtonLabel() {
+    const dropdownButton = document.getElementById("dropdownDays");
+    const checkboxes = document.querySelectorAll(
+      '.dropdown-menu input[type="checkbox"]'
+    );
+    const checkedDays = Array.from(checkboxes)
+      .filter((cb) => cb.checked)
+      .map((cb) => cb.value);
+
+    if (checkedDays.length === 0) {
+      dropdownButton.textContent = "Choose Days";
+    } else if (checkedDays.length === 1) {
+      dropdownButton.textContent = checkedDays[0];
+    } else {
+      dropdownButton.textContent = `${checkedDays.length} days selected`;
+    }
+  }
+
+  // Makes sure the selected days are stored
+  updateDaysSelected() {
+    const checkedDays = Array.from(
+      document.querySelectorAll('input[type="checkbox"]:checked')
+    ).map((cb) => cb.value);
+    const hiddenInput = document.getElementById("daysSelected");
+    if (hiddenInput) hiddenInput.value = checkedDays.join(",");
+  }
+
+  // This function hides the price group for student accounts
+  setupFormView() {
+    const priceGroup = document.getElementById("priceGroup");
+    const maxPriceGroup = document.getElementById("maxPriceGroup");
+    const priceInput = document.getElementById("price");
+    const maxPriceInput = document.getElementById("maxPrice");
+
+    if (this.accountType === "student") {
+      // Show only max price for students
+      if (priceGroup) priceGroup.style.display = "none";
+      if (maxPriceGroup) maxPriceGroup.style.display = "block";
+
+      if (priceInput) {
+        priceInput.removeAttribute("required");
+        priceInput.disabled = true; // ✅ disable unused input
+      }
+      if (maxPriceInput) {
+        maxPriceInput.setAttribute("required", "true");
+        maxPriceInput.disabled = false;
+      }
+    } else {
+      // Show only teacher price
+      if (priceGroup) priceGroup.style.display = "block";
+      if (maxPriceGroup) maxPriceGroup.style.display = "none";
+
+      if (priceInput) {
+        priceInput.setAttribute("required", "true");
+        priceInput.disabled = false;
+      }
+      if (maxPriceInput) {
+        maxPriceInput.removeAttribute("required");
+        maxPriceInput.disabled = true; // ✅ disable unused input
+      }
+    }
+  }
+
+  // Custom alert box
+  showAlert(message, isError = true) {
+    const alertBox = document.getElementById("customAlert");
+    const alertMessage = document.getElementById("customAlertMessage");
+    alertMessage.textContent = message;
+    alertBox.classList.remove("hidden");
+    alertBox.style.color = isError ? "red" : "green";
+
+    const closeBtn = document.getElementById("customAlertClose");
+    closeBtn.onclick = () => alertBox.classList.add("hidden");
   }
 }
-
-// Update label when checkbox is clicked
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', updateDayButtonLabel);
-});
-
-// Also update when clicking anywhere in day-option
-document.querySelectorAll('.day-option').forEach(item => {
-  item.addEventListener('click', function (e) {
-    e.stopPropagation();
-
-    const checkbox = this.querySelector('input[type="checkbox"]');
-
-  });
-});
-
-// Function to change the form based on account type
-function setupFormView(accountType) {
-  const priceGroup = document.getElementById("priceGroup");
-
-  if (accountType === "student" && priceGroup) {
-    priceGroup.style.display = "none";
-  }
-}
-
-const params = new URLSearchParams(window.location.search);
-const type = params.get("type") || "teacher";
-
-setupFormView(type);
-
-// Wave animation on scroll
-let wave1 = document.getElementById("wave1");
-let wave2 = document.getElementById("wave2");
-let wave3 = document.getElementById("wave3");
-let wave4 = document.getElementById("wave4");
-
-window.addEventListener("scroll", function () {
-  let value = window.scrollY;
-  wave1.style.backgroundPositionX = 400 + value + "px";
-  wave2.style.backgroundPositionX = 300 + value + "px";
-  wave3.style.backgroundPositionX = 200 + value + "px";
-  wave4.style.backgroundPositionX = 100 + value + "px";
-});
