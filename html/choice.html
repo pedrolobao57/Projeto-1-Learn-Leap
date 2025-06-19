@@ -6,43 +6,52 @@
     <title>Learn Leap</title>
     <link rel="stylesheet" href="/css/myStyles.css" />
     <link rel="shortcut icon" href="/img/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <header>
-      <img src="/img/Learn_Leap_W1.png" alt="Learn Leap Logo" class="logo" />
-      <h1 class="title">Learn Leap</h1>
+
+  <body class="bg-[#2286ff] text-white flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row items-center justify-center gap-4 py-6">
+      <img src="/img/Learn_Leap_W1.png" alt="Learn Leap Logo" class="w-12 h-auto" />
+      <h1 class="text-4xl font-semibold">Learn Leap</h1>
     </header>
 
-    <div class="hero">
-      <div class="heroContent">
+    <!-- Hero Section -->
+    <main class="hero text-center flex-1 flex items-center justify-center px-4">
+      <div class="heroContent flex flex-col sm:flex-row items-center justify-center gap-8 w-full max-w-5xl">
+
+        <!-- Teacher -->
         <div class="choice">
-          <a href="register.html?type=teacher"
-            ><img src="/img/teacherchoice.png" alt="Hero Image" />
+          <a href="register.html?type=teacher">
+            <img src="/img/teacherchoice.png" alt="Teacher" />
             <h4>Teacher</h4>
           </a>
         </div>
-        <div>
-          <h4>Or</h4>
-        </div>
+
+        <!-- Or -->
+        <h4 class="text-white text-2xl sm:text-3xl font-semibold">Or</h4>
+
+        <!-- Student -->
         <div class="choice">
-          <a href="register.html?type=student"
-            ><img src="/img/studentchoice.png" alt="" />
+          <a href="register.html?type=student">
+            <img src="/img/studentchoice.png" alt="Student" />
             <h4>Student</h4>
           </a>
         </div>
+
       </div>
-    </div>
+    </main>
 
-    <!-- secção de animação das ondas, com delay para ficarem desfazadas -->
-
-    <section>
+    <!-- Waves -->
+    <section class="relative h-32 overflow-hidden w-full">
       <div class="wave" id="wave1" style="--delay: 1"></div>
       <div class="wave" id="wave2" style="--delay: 2"></div>
       <div class="wave" id="wave3" style="--delay: 3"></div>
       <div class="wave" id="wave4" style="--delay: 4"></div>
     </section>
 
-    <div class="w"></div>
+    <div class="h-12"></div>
 
     <script src="/js/view/FirstPageView.js"></script>
     <script type="module" src="/js/init.js"></script>
