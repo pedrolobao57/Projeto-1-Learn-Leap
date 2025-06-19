@@ -4,25 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Settings</title>
+    <link rel="shortcut icon" href="/img/favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      ul {
+        z-index: 1000;
+      }
+    </style>
   </head>
 
-  <body class="bg-[#1e90ff] min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+  <body class="bg-[#2286ff] min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
     <!-- Botão Voltar -->
     <a
       href="javascript:history.back()"
-      class="fixed top-4 left-4 bg-white text-[#1e90ff] font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-100 transition z-10"
+      class="fixed top-4 left-4 bg-white text-[#2286ff] font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-100 transition z-10"
     >
       ← Voltar Atrás
     </a>
 
     <!-- Formulário -->
     <div class="bg-white p-10 rounded-2xl shadow-lg w-full max-w-xl relative z-10 h-[80vh] overflow-y-auto">
-      <h1 class="text-3xl font-bold text-center text-[#1e90ff] mb-8">User Settings</h1>
+      <h1 class="text-3xl font-bold text-center text-[#2286ff] mb-8">User Settings</h1>
 
       <form id="settingsForm" class="space-y-5">
         <div>
@@ -46,14 +52,13 @@
         </div>
 
         <div>
-          <label for="emailDisplay" class="block font-semibold">Email</label>
+          <label for="email" class="block font-semibold">Email</label>
           <input
             type="email"
-            id="emailDisplay"
-            disabled
+            id="email"
             class="w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 text-gray-500 cursor-not-allowed"
+            readonly
           />
-          <input type="hidden" id="emailHidden" />
         </div>
 
         <!-- SUBJECT DROPDOWN -->
@@ -70,7 +75,7 @@
             </button>
             <ul
               id="subjectMenu"
-              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden z-20"
+              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden max-h-48 overflow-auto"
             >
               <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Maths">Maths</li>
               <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Science">Science</li>
@@ -94,7 +99,7 @@
             </button>
             <ul
               id="classTypeMenu"
-              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden z-20"
+              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden max-h-48 overflow-auto"
             >
               <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="In Person">In Person</li>
               <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Online">Online</li>
@@ -117,7 +122,7 @@
             </button>
             <ul
               id="levelMenu"
-              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden z-20"
+              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden max-h-48 overflow-auto"
             >
               <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Primary School">Primary School</li>
               <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Basic">Basic</li>
@@ -131,67 +136,92 @@
         <div>
           <label for="locationInput" class="block font-semibold mb-1">Location</label>
           <input type="hidden" id="locationInput" name="location" required />
-          <button type="button" id="dropdownLocationButton" class="w-full text-left bg-white border border-gray-300 rounded-md p-2 shadow-sm hover:bg-blue-50">
-            Choose a Location
-          </button>
-          <ul id="locationDropdown" class="absolute z-50 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg hidden max-h-48 overflow-y-auto">
-            <!-- Localizações de Portugal -->
-            <li><a href="#" data-value="Aveiro" class="block px-4 py-2 hover:bg-blue-100">Aveiro</a></li>
-            <li><a href="#" data-value="Beja" class="block px-4 py-2 hover:bg-blue-100">Beja</a></li>
-            <li><a href="#" data-value="Braga" class="block px-4 py-2 hover:bg-blue-100">Braga</a></li>
-            <li><a href="#" data-value="Bragança" class="block px-4 py-2 hover:bg-blue-100">Bragança</a></li>
-            <li><a href="#" data-value="Castelo Branco" class="block px-4 py-2 hover:bg-blue-100">Castelo Branco</a></li>
-            <li><a href="#" data-value="Coimbra" class="block px-4 py-2 hover:bg-blue-100">Coimbra</a></li>
-            <li><a href="#" data-value="Évora" class="block px-4 py-2 hover:bg-blue-100">Évora</a></li>
-            <li><a href="#" data-value="Faro" class="block px-4 py-2 hover:bg-blue-100">Faro</a></li>
-            <li><a href="#" data-value="Guarda" class="block px-4 py-2 hover:bg-blue-100">Guarda</a></li>
-            <li><a href="#" data-value="Leiria" class="block px-4 py-2 hover:bg-blue-100">Leiria</a></li>
-            <li><a href="#" data-value="Lisboa" class="block px-4 py-2 hover:bg-blue-100">Lisboa</a></li>
-            <li><a href="#" data-value="Portalegre" class="block px-4 py-2 hover:bg-blue-100">Portalegre</a></li>
-            <li><a href="#" data-value="Porto" class="block px-4 py-2 hover:bg-blue-100">Porto</a></li>
-            <li><a href="#" data-value="Santarém" class="block px-4 py-2 hover:bg-blue-100">Santarém</a></li>
-            <li><a href="#" data-value="Setúbal" class="block px-4 py-2 hover:bg-blue-100">Setúbal</a></li>
-            <li><a href="#" data-value="Viana do Castelo" class="block px-4 py-2 hover:bg-blue-100">Viana do Castelo</a></li>
-            <li><a href="#" data-value="Vila Real" class="block px-4 py-2 hover:bg-blue-100">Vila Real</a></li>
-            <li><a href="#" data-value="Viseu" class="block px-4 py-2 hover:bg-blue-100">Viseu</a></li>
-          </ul>
-        </div>
-
-        <!-- PRICE -->
-        <div>
-          <label for="price" class="block font-semibold">Price</label>
-          <input
-            type="number"
-            id="price"
-            class="w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-300"
-          />
-        </div>
-
-        <!-- AVAILABLE DAYS -->
-        <div>
-          <label class="block font-semibold mb-2">Available Days</label>
-          <div class="grid grid-cols-2 gap-2">
-            <label><input type="checkbox" value="Monday" class="dayCheckbox mr-2" /> Monday</label>
-            <label><input type="checkbox" value="Tuesday" class="dayCheckbox mr-2" /> Tuesday</label>
-            <label><input type="checkbox" value="Wednesday" class="dayCheckbox mr-2" /> Wednesday</label>
-            <label><input type="checkbox" value="Thursday" class="dayCheckbox mr-2" /> Thursday</label>
-            <label><input type="checkbox" value="Friday" class="dayCheckbox mr-2" /> Friday</label>
-            <label><input type="checkbox" value="Saturday" class="dayCheckbox mr-2" /> Saturday</label>
-            <label><input type="checkbox" value="Sunday" class="dayCheckbox mr-2" /> Sunday</label>
+          <div class="relative">
+            <button type="button" id="dropdownLocationButton" class="w-full text-left bg-white border border-gray-300 rounded-md p-2 shadow-sm hover:bg-blue-50">
+              Choose a Location
+            </button>
+            <ul id="locationDropdown" class="absolute z-50 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg hidden max-h-48 overflow-y-auto">
+              <li><a href="#" data-value="Aveiro" class="block px-4 py-2 hover:bg-blue-100">Aveiro</a></li>
+              <li><a href="#" data-value="Beja" class="block px-4 py-2 hover:bg-blue-100">Beja</a></li>
+              <li><a href="#" data-value="Braga" class="block px-4 py-2 hover:bg-blue-100">Braga</a></li>
+              <li><a href="#" data-value="Bragança" class="block px-4 py-2 hover:bg-blue-100">Bragança</a></li>
+              <li><a href="#" data-value="Castelo Branco" class="block px-4 py-2 hover:bg-blue-100">Castelo Branco</a></li>
+              <li><a href="#" data-value="Coimbra" class="block px-4 py-2 hover:bg-blue-100">Coimbra</a></li>
+              <li><a href="#" data-value="Évora" class="block px-4 py-2 hover:bg-blue-100">Évora</a></li>
+              <li><a href="#" data-value="Faro" class="block px-4 py-2 hover:bg-blue-100">Faro</a></li>
+              <li><a href="#" data-value="Guarda" class="block px-4 py-2 hover:bg-blue-100">Guarda</a></li>
+              <li><a href="#" data-value="Leiria" class="block px-4 py-2 hover:bg-blue-100">Leiria</a></li>
+              <li><a href="#" data-value="Lisboa" class="block px-4 py-2 hover:bg-blue-100">Lisboa</a></li>
+              <li><a href="#" data-value="Portalegre" class="block px-4 py-2 hover:bg-blue-100">Portalegre</a></li>
+              <li><a href="#" data-value="Porto" class="block px-4 py-2 hover:bg-blue-100">Porto</a></li>
+              <li><a href="#" data-value="Santarém" class="block px-4 py-2 hover:bg-blue-100">Santarém</a></li>
+              <li><a href="#" data-value="Setúbal" class="block px-4 py-2 hover:bg-blue-100">Setúbal</a></li>
+              <li><a href="#" data-value="Viana do Castelo" class="block px-4 py-2 hover:bg-blue-100">Viana do Castelo</a></li>
+              <li><a href="#" data-value="Vila Real" class="block px-4 py-2 hover:bg-blue-100">Vila Real</a></li>
+              <li><a href="#" data-value="Viseu" class="block px-4 py-2 hover:bg-blue-100">Viseu</a></li>
+            </ul>
           </div>
-          <input type="hidden" id="daysSelected" />
         </div>
+        <!-- PREÇO POR SESSÃO -->
+<div>
+  <label for="maxPrice" class="block font-semibold">Maximum Budget Per Session (€)</label>
+  <div class="flex items-center mt-1">
+    <input
+      type="number"
+      id="maxPrice"
+      class="w-full p-2 border border-gray-300 rounded-l-md shadow-sm focus:ring-2 focus:ring-blue-300"
+      placeholder="Ex: 15"
+      min="0"
+    />
+    <span class="bg-gray-200 border border-gray-300 px-3 py-2 rounded-r-md">€</span>
+  </div>
+</div>
 
-        <div class="text-center pt-4">
-          <button
-            type="submit"
-            class="bg-[#1e90ff] text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-300"
-          >
-            Save Changes
-          </button>
-        </div>
+<!-- DIAS DISPONÍVEIS -->
+<div>
+  <label class="block font-semibold mb-1">Available Days</label>
+  <div class="grid grid-cols-2 gap-2">
+    <label class="flex items-center">
+      <input type="checkbox" value="Monday" class="mr-2" id="dayMonday" />
+      Monday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Tuesday" class="mr-2" id="dayTuesday" />
+      Tuesday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Wednesday" class="mr-2" id="dayWednesday" />
+      Wednesday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Thursday" class="mr-2" id="dayThursday" />
+      Thursday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Friday" class="mr-2" id="dayFriday" />
+      Friday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Saturday" class="mr-2" id="daySaturday" />
+      Saturday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Sunday" class="mr-2" id="daySunday" />
+      Sunday
+    </label>
+  </div>
+</div>
+
+        <button
+          type="submit"
+          class="w-full bg-[#1e90ff] text-white font-bold p-3 rounded-lg hover:bg-blue-700 transition"
+        >
+          Save
+        </button>
       </form>
     </div>
-<script src="/js/view/SettingsView.js"></script>
+
+
+    <script src="/js/view/SettingsView.js"></script>
   </body>
 </html>
