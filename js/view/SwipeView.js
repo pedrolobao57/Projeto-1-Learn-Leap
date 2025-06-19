@@ -247,7 +247,7 @@ function swipe(action) {
 }
 
 finishBtn.addEventListener("click", () => {
-  window.location.href = "/html/compare.html";
+  window.location.href = "/html/studentHome.html";
 });
 
 updateFinishBtnVisibility();

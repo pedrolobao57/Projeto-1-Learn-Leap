@@ -139,9 +139,27 @@
           <button class="flex-1 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
             <img src="https://img.icons8.com/?size=100&id=238Ts6gRDGws&format=png&color=ffffff" class="w-5 h-5" alt="Call"> Call
           </button>
-          <button class="flex-1 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">Book Now</button>
+          <button class="book-now-btn flex-1 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">Book Now</button>
         </div>
       `;
       container.appendChild(card);
     });
   }
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("book-now-btn")) {
+    const card = e.target.closest(".bg-white");
+    const teacherName = card.querySelector("h2").textContent.trim();
+
+    // Get the full teacher object from localStorage
+    const likedTeachers = JSON.parse(localStorage.getItem("likedTeachers")) || [];
+    const selectedTeacher = likedTeachers.find(t => t.name === teacherName);
+
+    if (selectedTeacher) {
+      localStorage.setItem("selectedTeacher", JSON.stringify(selectedTeacher));
+      window.location.href = "/html/bookSession.html";
+    } else {
+      console.error("Teacher not found in likedTeachers:", teacherName);
+    }
+  }
+});
