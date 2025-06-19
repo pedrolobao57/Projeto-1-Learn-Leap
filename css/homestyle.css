@@ -320,7 +320,36 @@ h2 {
   font-weight: bold;
 }
 
-/*Student*/
+/*Session*/
+
+.rewards-card,
+.quote-card {
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.icons span {
+  margin-right: 10px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+
+/*Students*/
 
 .main-container {
   padding-top: 20px;
@@ -391,7 +420,7 @@ h1 {
 }
 
 .text-button {
-  background: #007bff;
+  background: #2286ff;
   color: #fff;
   border: none;
   border-radius: 20px;
@@ -421,6 +450,8 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .reward-card {
@@ -428,6 +459,14 @@ h1 {
   padding: 20px;
   border-radius: 12px;
   text-align: center;
+}
+
+.reward-card img {
+  max-width: 100%;
+  max-height: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
 }
 
 .reward-card p {
@@ -442,7 +481,7 @@ h1 {
 }
 
 .buy-btn {
-  background: #007bff;
+  background: #2286ff;
   border: none;
   color: #fff;
   padding: 4px 12px;
@@ -452,5 +491,5 @@ h1 {
 }
 
 .buy-btn:hover {
-  background: #005fc0;
+  background: #2286ff;
 }
