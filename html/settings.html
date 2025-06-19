@@ -1,56 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/myStyles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Settings</title>
     <link rel="shortcut icon" href="/img/favicon.png" />
-    <title>Learn Leap</title>
-</head>
-<body>
-  <div class="settings-container">
-    <h1>Settings</h1>
-    
-    <form id="settingsForm">
-      <div class="pfp"><img src="/img/pfp.jpg" width="200"></div>
-      <!-- Notification Preference -->
-      <div class="setting-item">
-        <label for="notifications">Notifications:</label>
-        <select id="notifications" name="notifications">
-          <option value="all">All</option>
-          <option value="important">Important Only</option>
-          <option value="none">None</option>
-        </select>
-      </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      ul {
+        z-index: 1000;
+      }
+    </style>
+  </head>
 
+  <body class="bg-[#2286ff] min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+    <!-- Botão Voltar -->
+    <a
+      href="javascript:history.back()"
+      class="fixed top-4 left-4 bg-white text-[#2286ff] font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-100 transition z-10"
+    >
+      ← Voltar Atrás
+    </a>
 
-      <div class="setting-item">
-        <label>
-          <input type="checkbox" id="privateAccount" name="privateAccount">
-          Make my account private
-        </label>
-      </div>
+    <!-- Formulário -->
+    <div class="bg-white p-10 rounded-2xl shadow-lg w-full max-w-xl relative z-10 h-[80vh] overflow-y-auto">
+      <h1 class="text-3xl font-bold text-center text-[#2286ff] mb-8">User Settings</h1>
 
-      <!-- Save Button -->
-      <div class="setting-item">
-        <button type="submit">Save Settings</button>
-      </div>
-    </form>
+      <form id="settingsForm" class="space-y-5">
+        <div>
+          <label for="username" class="block font-semibold">Name</label>
+          <input
+            type="text"
+            id="username"
+            class="w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="dob" class="block font-semibold">Date of Birth</label>
+          <input
+            type="date"
+            id="dob"
+            class="w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block font-semibold">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 text-gray-500 cursor-not-allowed"
+            readonly
+          />
+        </div>
+
+        <!-- SUBJECT DROPDOWN -->
+        <div>
+          <label class="block font-semibold">Subject</label>
+          <input type="hidden" id="subjectInput" required />
+          <div class="relative">
+            <button
+              type="button"
+              id="subjectBtn"
+              class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md text-left"
+            >
+              Choose a Subject
+            </button>
+            <ul
+              id="subjectMenu"
+              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden max-h-48 overflow-auto"
+            >
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Maths">Maths</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Science">Science</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="English">English</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Portuguese">Portuguese</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CLASS TYPE DROPDOWN -->
+        <div>
+          <label class="block font-semibold">Class Type</label>
+          <input type="hidden" id="classTypeInput" required />
+          <div class="relative">
+            <button
+              type="button"
+              id="classTypeBtn"
+              class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md text-left"
+            >
+              Choose Class Type
+            </button>
+            <ul
+              id="classTypeMenu"
+              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden max-h-48 overflow-auto"
+            >
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="In Person">In Person</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Online">Online</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Both">Both</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- LEVEL DROPDOWN -->
+        <div>
+          <label class="block font-semibold">Level</label>
+          <input type="hidden" id="levelInput" required />
+          <div class="relative">
+            <button
+              type="button"
+              id="levelBtn"
+              class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md text-left"
+            >
+              Choose Level
+            </button>
+            <ul
+              id="levelMenu"
+              class="absolute w-full bg-white border rounded-md mt-1 shadow hidden max-h-48 overflow-auto"
+            >
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Primary School">Primary School</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="Basic">Basic</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="High School">High School</li>
+              <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer" data-value="University">University</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- LOCATION INPUT -->
+        <div>
+          <label for="locationInput" class="block font-semibold mb-1">Location</label>
+          <input type="hidden" id="locationInput" name="location" required />
+          <div class="relative">
+            <button type="button" id="dropdownLocationButton" class="w-full text-left bg-white border border-gray-300 rounded-md p-2 shadow-sm hover:bg-blue-50">
+              Choose a Location
+            </button>
+            <ul id="locationDropdown" class="absolute z-50 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg hidden max-h-48 overflow-y-auto">
+              <li><a href="#" data-value="Aveiro" class="block px-4 py-2 hover:bg-blue-100">Aveiro</a></li>
+              <li><a href="#" data-value="Beja" class="block px-4 py-2 hover:bg-blue-100">Beja</a></li>
+              <li><a href="#" data-value="Braga" class="block px-4 py-2 hover:bg-blue-100">Braga</a></li>
+              <li><a href="#" data-value="Bragança" class="block px-4 py-2 hover:bg-blue-100">Bragança</a></li>
+              <li><a href="#" data-value="Castelo Branco" class="block px-4 py-2 hover:bg-blue-100">Castelo Branco</a></li>
+              <li><a href="#" data-value="Coimbra" class="block px-4 py-2 hover:bg-blue-100">Coimbra</a></li>
+              <li><a href="#" data-value="Évora" class="block px-4 py-2 hover:bg-blue-100">Évora</a></li>
+              <li><a href="#" data-value="Faro" class="block px-4 py-2 hover:bg-blue-100">Faro</a></li>
+              <li><a href="#" data-value="Guarda" class="block px-4 py-2 hover:bg-blue-100">Guarda</a></li>
+              <li><a href="#" data-value="Leiria" class="block px-4 py-2 hover:bg-blue-100">Leiria</a></li>
+              <li><a href="#" data-value="Lisboa" class="block px-4 py-2 hover:bg-blue-100">Lisboa</a></li>
+              <li><a href="#" data-value="Portalegre" class="block px-4 py-2 hover:bg-blue-100">Portalegre</a></li>
+              <li><a href="#" data-value="Porto" class="block px-4 py-2 hover:bg-blue-100">Porto</a></li>
+              <li><a href="#" data-value="Santarém" class="block px-4 py-2 hover:bg-blue-100">Santarém</a></li>
+              <li><a href="#" data-value="Setúbal" class="block px-4 py-2 hover:bg-blue-100">Setúbal</a></li>
+              <li><a href="#" data-value="Viana do Castelo" class="block px-4 py-2 hover:bg-blue-100">Viana do Castelo</a></li>
+              <li><a href="#" data-value="Vila Real" class="block px-4 py-2 hover:bg-blue-100">Vila Real</a></li>
+              <li><a href="#" data-value="Viseu" class="block px-4 py-2 hover:bg-blue-100">Viseu</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- PREÇO POR SESSÃO -->
+<div>
+  <label for="maxPrice" class="block font-semibold">Maximum Budget Per Session (€)</label>
+  <div class="flex items-center mt-1">
+    <input
+      type="number"
+      id="maxPrice"
+      class="w-full p-2 border border-gray-300 rounded-l-md shadow-sm focus:ring-2 focus:ring-blue-300"
+      placeholder="Ex: 15"
+      min="0"
+    />
+    <span class="bg-gray-200 border border-gray-300 px-3 py-2 rounded-r-md">€</span>
   </div>
+</div>
 
-  <script src="settings.js"></script>
+<!-- DIAS DISPONÍVEIS -->
+<div>
+  <label class="block font-semibold mb-1">Available Days</label>
+  <div class="grid grid-cols-2 gap-2">
+    <label class="flex items-center">
+      <input type="checkbox" value="Monday" class="mr-2" id="dayMonday" />
+      Monday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Tuesday" class="mr-2" id="dayTuesday" />
+      Tuesday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Wednesday" class="mr-2" id="dayWednesday" />
+      Wednesday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Thursday" class="mr-2" id="dayThursday" />
+      Thursday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Friday" class="mr-2" id="dayFriday" />
+      Friday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Saturday" class="mr-2" id="daySaturday" />
+      Saturday
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" value="Sunday" class="mr-2" id="daySunday" />
+      Sunday
+    </label>
+  </div>
+</div>
+
+        <button
+          type="submit"
+          class="w-full bg-[#1e90ff] text-white font-bold p-3 rounded-lg hover:bg-blue-700 transition"
+        >
+          Save
+        </button>
+      </form>
+    </div>
 
 
-
-
-
-
-    <section>
-      <div class="wave" id="wave1" style="--delay: 1"></div>
-      <div class="wave" id="wave2" style="--delay: 2"></div>
-      <div class="wave" id="wave3" style="--delay: 3"></div>
-      <div class="wave" id="wave4" style="--delay: 4"></div>
-    </section>
-<script type="module" src="/js/init.js"></script>
-</body>
+    <script src="/js/view/SettingsView.js"></script>
+  </body>
 </html>
