@@ -20,6 +20,7 @@
     <div class="nav-icons">
       <div class="icon" onclick="showSection('home')"><button><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="Home"></button></div>
       <div class="icon" onclick="showSection('profile')"><button><img src="https://img.icons8.com/?size=100&id=14736&format=png&color=000000" alt="Person"></button></div>
+      <div class="icon" onclick="showSection('reward')"><button><img src="https://img.icons8.com/?size=100&id=2koI9uU0dBK7&format=png&color=000000" alt="Rewards"></button></div>
     </div>
 
     <!-- Clock -->
@@ -78,7 +79,7 @@
 
       <div id="profile" class="content-section" style="display:none;">
        <div class="main-container">
-        <h1>Students</h1>
+        <h1>Teachers</h1>
         <div class="students-card">
          <div class="student-info">
           <div class="profile-img"></div>
@@ -110,7 +111,7 @@
             <strong>User</strong>
             <div class="subject-info">
               <img src="https://img.icons8.com/?size=100&id=41414&format=png&color=2286ff" alt="book icon">
-              <span>Maths</span>
+              <span>English</span>
               <img src="https://img.icons8.com/?size=100&id=3685&format=png&color=2286ff" alt="globe icon">
               <span>Online</span>
             </div>
@@ -129,6 +130,43 @@
        </div>
       </div>
   </div>
+
+  <!-- Reward -->
+
+<div id="reward" class="content-section" style="display:none;">
+  <div class="main-container">
+    <h1>Rewards</h1>
+    <div class="rewards-grid">
+
+      <!-- Merchandise -->
+      <div class="reward-card">
+        <div class="icon">👕</div>
+        <p>Learn Leap T-Shirt</p>
+        <div class="price">10000 🪙 <button class="buy-btn">Buy</button></div>
+      </div>
+
+      <div class="reward-card">
+        <div class="icon">🧢</div>
+        <p>Learn Leap Hat</p>
+        <div class="price">2000 🪙 <button class="buy-btn">Buy</button></div>
+      </div>
+
+      <div class="reward-card">
+        <div class="icon">🔑</div>
+        <p>Learn Leap Keychain</p>
+        <div class="price">3000 🪙 <button class="buy-btn">Buy</button></div>
+      </div>
+
+      <div class="reward-card">
+        <div class="icon">☕</div>
+        <p>Learn Leap Cup</p>
+        <div class="price">4500 🪙 <button class="buy-btn">Buy</button></div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 
   <!-- Right Panel -->
   <div class="right-panel">
@@ -180,7 +218,7 @@
       </div>
     </div>
 
-  <script src="/js/view/StudentHomeView.js"></script>
+  <script src="/js/view/TeacherHomeView.js"></script>
   <script type="module" src="/js/init.js"></script>
 </body>
 </html>
