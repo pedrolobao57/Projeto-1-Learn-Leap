@@ -116,7 +116,7 @@ header img {
 .registerBtn {
   background-color: white;
   color: #2286ff;
-  border: 2px solid #2286ff;
+  border: 2px solid #ffffff;
 }
 
 .loginBtn {
@@ -129,7 +129,6 @@ header img {
   background-color: #2286ff;
   color: #fff;
   transition: 0.4s;
-  border-color: #fff;
   transform: scale(1.1);
 }
 .loginBtn:hover {

@@ -1,10 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Liked Teachers</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+  <script src="https://kit.fontawesome.com/your-kit.js" crossorigin="anonymous"></script>
+  <style>
+    .wave {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-repeat: repeat-x;
+      background-size: cover;
+      z-index: 0;
+    }
+
+    #wave1 {
+      bottom: 0;
+      background-image: url('/img/wave.png');
+      animation: waveAnim 10s linear infinite;
+      opacity: 1;
+    }
+
+    #wave2 {
+      bottom: 10px;
+      background-image: url('/img/wave.png');
+      animation: waveAnim 15s linear infinite reverse;
+      opacity: 0.5;
+    }
+
+    @keyframes waveAnim {
+      from {
+        background-position-x: 0;
+      }
+      to {
+        background-position-x: 1000px;
+      }
+    }
+
+    body {
+      position: relative;
+      overflow-x: hidden;
+    }
+  </style>
 </head>
-<body>
+
+<body class="bg-[#ebf3ff] min-h-screen relative pt-6 pb-32 px-4">
+
+  <h1 class="text-3xl font-bold text-blue-600 mb-6 text-center z-10 relative">Your Liked Teachers</h1>
+  <div id="likedContainer" class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+  <!-- Waves -->
+  <div id="wave1" class="wave"></div>
+  <div id="wave2" class="wave"></div>
+
+  <script>
+    const likedTeachers = JSON.parse(localStorage.getItem("likedTeachers")) || [];
+    const container = document.getElementById("likedContainer");
+
+    if (likedTeachers.length === 0) {
+      container.innerHTML = "<p class='text-center text-gray-500 col-span-3'>No liked teachers found.</p>";
+    } else {
+      likedTeachers.forEach(teacher => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-4 rounded-xl shadow border border-blue-200 flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center gap-4">
+              <img src="/img/pfp.jpg" class="w-16 h-16 rounded-full object-cover" />
+              <div>
+                <h2 class="text-xl font-bold text-blue-600">${teacher.name}</h2>
+                <p class="text-sm text-gray-600">${teacher.subject} • ${teacher.level}</p>
+              </div>
+            </div>
+            <ul class="mt-4 text-sm text-gray-700 space-y-1">
+              <li><i class="fa-solid fa-coins text-blue-500 mr-2"></i>€${teacher.price}</li>
+              <li><i class="fa-solid fa-map-marker-alt text-blue-500 mr-2"></i>${teacher.location}</li>
+              <li><i class="fa-solid fa-star text-yellow-400 mr-2"></i>${teacher.rating}/5</li>
+              <li><i class="fa-solid fa-clock text-blue-500 mr-2"></i>${teacher.days.join(", ")}</li>
+              <li><i class="fa-solid fa-user-graduate text-blue-500 mr-2"></i>${teacher.classType}</li>
+              <li><i class="fa-solid fa-info-circle text-blue-500 mr-2"></i>${teacher.description}</li>
+            </ul>
+          </div>
+          <button class="mt-4 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Book Now</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
 </body>
 </html>
