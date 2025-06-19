@@ -91,12 +91,26 @@ function init() {
         days,
       };
 
-      try {
-        model.saveAccount(account);
-        view.showAlert("Registration successful!", false);
-      } catch (err) {
-        view.showAlert(err.message);
+        try {
+    model.saveAccount(account);
+    view.showAlert("Registration successful!", false);
+
+    // Auto-login & redirect after short delay
+    setTimeout(() => {
+      // Save user to localStorage as logged in
+      localStorage.setItem("loggedInUser", JSON.stringify(account));
+
+      // Redirect based on account type
+      if (account.type === "teacher") {
+        window.location.href = "/html/teacherHome.html"; 
+      } else if (account.type === "student") {
+        window.location.href = "/html/studentHome.html"; 
       }
+    }, 1500); // delay so user sees the alert first
+
+  } catch (err) {
+    view.showAlert(err.message);
+  }
     });
   }
 

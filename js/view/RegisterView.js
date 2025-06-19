@@ -189,7 +189,7 @@ export default class RegisterView {
 
       if (priceInput) {
         priceInput.removeAttribute("required");
-        priceInput.disabled = true; // ✅ disable unused input
+        priceInput.disabled = true;
       }
       if (maxPriceInput) {
         maxPriceInput.setAttribute("required", "true");
@@ -206,7 +206,7 @@ export default class RegisterView {
       }
       if (maxPriceInput) {
         maxPriceInput.removeAttribute("required");
-        maxPriceInput.disabled = true; // ✅ disable unused input
+        maxPriceInput.disabled = true;
       }
     }
   }
