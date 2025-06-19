@@ -9,8 +9,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 />
+  
 </head>
 <body>
   <!-- Left Navbar -->
@@ -62,7 +63,7 @@
        <h2>Quote of the day</h2>
        <div class="quote-card">
         <p>"A good teacher can inspire <span class="highlight">hope</span>, ignite the <span class="highlight">imagination</span>, and instill a <span class="highlight">love</span> of learning." <br> – <strong>Joe Hendry</strong></p>
-        <img class="thank-you-img" src="/img/thankyou.png" alt="Thank You Teacher">
+        <img class="thank-you-img" src="/img/thankyou.png" alt="Thank You Teacher" >
        </div>
       </div>
      </div>
@@ -119,6 +120,21 @@
         <div class="main-container">
          <h1> Teachers</h1>
         </div>
+        <div class="w-screen h-screen flex flex-col items-center justify-center relative">
+  <div class="swipes relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:w-1/3 h-[600px] flex items-center justify-center">
+    <div id="cardContainer" class="relative w-full h-full"></div>
+  </div>
+
+  <button id="finishBtn" 
+    style="display:none;" 
+    class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600 transition z-50">
+    Finish Swiping
+  </button>
+</div>
+
+
+
+
       </div>
 
   <!-- Right Panel -->
@@ -172,6 +188,7 @@
     </div>
 
   <script src="/js/view/StudentHomeView.js"></script>
+  <script src="/js/view/SwipeView.js"></script>
   <script src="/js/view/CompareView.js"></script>
   <script type="module" src="/js/init.js"></script>
   
