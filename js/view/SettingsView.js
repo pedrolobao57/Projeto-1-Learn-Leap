@@ -23,9 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("levelBtn").textContent = loggedInUser.level || "Choose Level";
   document.getElementById("dropdownLocationButton").textContent = loggedInUser.location || "Choose a Location";
 
-  // Preencher maxPrice
-  if (loggedInUser.maxPrice) {
-    document.getElementById("maxPrice").value = loggedInUser.maxPrice;
+  // Mostrar campo de preço correto com base no tipo
+  const maxPriceContainer = document.getElementById("maxPriceContainer"); // ex: <div id="maxPriceContainer">
+  const priceContainer = document.getElementById("priceContainer");       // ex: <div id="priceContainer">
+
+  if (loggedInUser.type === "teacher") {
+    priceContainer.style.display = "block";
+    maxPriceContainer.style.display = "none";
+
+    // Preencher price
+    if (loggedInUser.price) {
+      document.getElementById("price").value = loggedInUser.price;
+    }
+  } else if (loggedInUser.type === "student") {
+    priceContainer.style.display = "none";
+    maxPriceContainer.style.display = "block";
+
+    // Preencher maxPrice
+    if (loggedInUser.maxPrice) {
+      document.getElementById("maxPrice").value = loggedInUser.maxPrice;
+    }
   }
 
   // Preencher dias disponíveis
@@ -36,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Menu dropdown handlers
+  // Dropdowns
   function setupDropdown(buttonId, menuId, inputId) {
     const button = document.getElementById(buttonId);
     const menu = document.getElementById(menuId);
@@ -60,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupDropdown("classTypeBtn", "classTypeMenu", "classTypeInput");
   setupDropdown("levelBtn", "levelMenu", "levelInput");
 
-  // Location dropdown
   const locationBtn = document.getElementById("dropdownLocationButton");
   const locationMenu = document.getElementById("locationDropdown");
   const locationInput = document.getElementById("locationInput");
@@ -99,9 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
       classes: document.getElementById("classTypeInput").value,
       level: document.getElementById("levelInput").value,
       location: document.getElementById("locationInput").value,
-      maxPrice: document.getElementById("maxPrice").value,
       days: selectedDays
     };
+
+    if (loggedInUser.type === "teacher") {
+      updatedUser.price = document.getElementById("price").value;
+    } else if (loggedInUser.type === "student") {
+      updatedUser.maxPrice = document.getElementById("maxPrice").value;
+    }
 
     localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
     alert("Settings saved successfully!");
