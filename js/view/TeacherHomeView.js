@@ -127,3 +127,12 @@ window.addEventListener("click", function (e) {
     sidebarMenu.style.display = "none";
   }
 });
+  const logoutButton = document.getElementById("logoutButton");
+
+  logoutButton.addEventListener("click", () => {
+    // Apagar todos os dados do localStorage
+    localStorage.clear();
+
+    // Redirecionar para a página de login (index.html)
+    window.location.href = "/index.html";
+  });
