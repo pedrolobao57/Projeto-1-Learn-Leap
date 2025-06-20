@@ -1,11 +1,12 @@
 import { BookSessionModel } from "./model/BookSessionModel.js";
 import { BookSessionView } from "./view/BookSessionView.js";
-import RegisterView from '/js/view/RegisterView.js';
-import  UserModel  from  "/js/model/UserModel.js";
+import RegisterView from "/js/view/RegisterView.js";
+import UserModel from "/js/model/UserModel.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   setupWaveScrollEffect();
 
+  // Booking page
   if (document.getElementById("bookingForm")) {
     const teacher = BookSessionModel.getSelectedTeacher();
     console.log("Loaded selected teacher:", teacher);
@@ -20,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     BookSessionView.onSubmit((formData) => {
       const success = BookSessionModel.bookLesson(teacher, formData);
       if (success) {
-        // Clear selectedTeacher so user must select again next time
         BookSessionModel.clearSelectedTeacher();
         console.log("Lesson booked successfully for teacher:", teacher.name);
       } else {
@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  let accountType = "teacher"; // default
+  // Registration page
+  let accountType = "teacher";
 
   const registerBtn = document.getElementById("registerBtn");
   if (registerBtn) {
@@ -117,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Login page
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     const model = new UserModel(accountType);
@@ -138,7 +140,12 @@ document.addEventListener("DOMContentLoaded", () => {
         messageDiv.textContent = "Invalid email or password.";
       }
     });
+
+    return;
   }
+
+  // Home page session display
+  updateUpcomingSessions();
 });
 
 function setupWaveScrollEffect() {
@@ -157,3 +164,35 @@ function setupWaveScrollEffect() {
     wave4.style.backgroundPositionX = 100 + value + "px";
   });
 }
+
+// ✅ Mostra sessões agendadas na home
+function updateUpcomingSessions() {
+  const container = document.querySelector(".sessions");
+  if (!container) return;
+
+  const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+  container.innerHTML = "";
+
+  if (bookings.length === 0) {
+    container.innerHTML = "<p class='text-gray-500'>No upcoming sessions.</p>";
+    return;
+  }
+
+  bookings.forEach(({ teacher, formData, bookedAt }) => {
+    const session = document.createElement("div");
+    session.className = "p-4 bg-white rounded-lg shadow border border-blue-100 mb-4";
+
+    session.innerHTML = `
+      <h3 class="text-lg font-semibold text-blue-600">${teacher.name}</h3>
+      <p class="text-sm text-gray-700">📚 <strong>${teacher.subject}</strong> • 💶 €${teacher.price}</p>
+      <p class="text-sm text-gray-700">🗓️ ${formData.day} at ${formData.time}</p>
+      ${formData.notes ? `<p class="text-sm text-gray-600 italic">"${formData.notes}"</p>` : ""}
+      <p class="text-xs text-gray-400 mt-1">Booked on ${new Date(bookedAt).toLocaleString()}</p>
+    `;
+
+    
+
+    container.appendChild(session);
+  });
+}
+

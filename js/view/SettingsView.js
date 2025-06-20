@@ -23,13 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("levelBtn").textContent = loggedInUser.level || "Choose Level";
   document.getElementById("dropdownLocationButton").textContent = loggedInUser.location || "Choose a Location";
 
-  const maxPriceContainer = document.getElementById("maxPriceContainer");
-  const priceContainer = document.getElementById("priceContainer");
+  // Mostrar campo de preço correto com base no tipo
+  const maxPriceContainer = document.getElementById("maxPriceContainer"); // ex: <div id="maxPriceContainer">
+  const priceContainer = document.getElementById("priceContainer");       // ex: <div id="priceContainer">
 
   if (loggedInUser.type === "teacher") {
     priceContainer.style.display = "block";
     maxPriceContainer.style.display = "none";
 
+    // Preencher price
     if (loggedInUser.price) {
       document.getElementById("price").value = loggedInUser.price;
     }
@@ -37,11 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
     priceContainer.style.display = "none";
     maxPriceContainer.style.display = "block";
 
+    // Preencher maxPrice
     if (loggedInUser.maxPrice) {
       document.getElementById("maxPrice").value = loggedInUser.maxPrice;
     }
   }
 
+  // Preencher dias disponíveis
   if (Array.isArray(loggedInUser.days)) {
     loggedInUser.days.forEach(day => {
       const checkbox = document.getElementById(`day${day}`);
@@ -49,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Dropdowns setup function
+  // Dropdowns
   function setupDropdown(buttonId, menuId, inputId) {
     const button = document.getElementById(buttonId);
     const menu = document.getElementById(menuId);
@@ -91,10 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  
-
-
-  // Submit do formulário
+  // Submit
   form.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -124,21 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
-    showAlert("Settings saved successfully!", false); // false = alerta verde
+    alert("Settings saved successfully!");
   });
 });
-
-function showAlert(message, isError = false) {
-  const alertBox = document.getElementById("customAlert");
-  const alertMessage = document.getElementById("customAlertMessage");
-  const closeBtn = document.getElementById("customAlertClose");
-
-  alertMessage.textContent = message;
-  alertMessage.style.color = isError ? "red" : "green";
-
-  alertBox.classList.remove("hidden");
-
-  closeBtn.onclick = () => {
-    alertBox.classList.add("hidden");
-  };
-}

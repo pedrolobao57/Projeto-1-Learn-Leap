@@ -140,7 +140,7 @@ function createCard(teacher) {
         </button>
         <button class="btn accept w-1/2 py-2 bg-[#2286ff] text-white rounded-full shadow-md hover:bg-blue-600 transition">
           <i class="fa-solid fa-check text-xl"></i>
-        </button> 
+        </button>
       </div>
     </div>
   `;
@@ -247,7 +247,7 @@ function swipe(action) {
 }
 
 finishBtn.addEventListener("click", () => {
-   showSection("profile");
+  window.location.href = "/html/studentHome.html";
 });
 
 updateFinishBtnVisibility();
