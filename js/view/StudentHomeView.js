@@ -85,7 +85,7 @@
     }
   }
 
-  // Avatar toggle
+  // Avatar dropdown toggle
   const avatarButton = document.getElementById("avatarButton");
   const sidebarMenu = document.getElementById("sidebarMenu");
 
@@ -170,3 +170,18 @@ document.addEventListener("click", (e) => {
     }
   }
 });
+
+window.addEventListener("click", function (e) {
+  if (!avatarButton.contains(e.target) && !sidebarMenu.contains(e.target)) {
+    sidebarMenu.style.display = "none";
+  }
+});
+  const logoutButton = document.getElementById("logoutButton");
+
+  logoutButton.addEventListener("click", () => {
+    // Clear all localStorage data
+    localStorage.clear();
+
+    // redirect to index.html
+    window.location.href = "/index.html";
+  });

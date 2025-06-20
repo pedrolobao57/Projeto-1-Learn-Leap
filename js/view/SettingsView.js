@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Preencher campos existentes
+  // Fill existing fields
   document.getElementById("username").value = loggedInUser.name || "";
   document.getElementById("dob").value = loggedInUser.dob || "";
   document.getElementById("email").value = loggedInUser.email || "";
@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("levelBtn").textContent = loggedInUser.level || "Choose Level";
   document.getElementById("dropdownLocationButton").textContent = loggedInUser.location || "Choose a Location";
 
-  // Mostrar campo de preço correto com base no tipo
-  const maxPriceContainer = document.getElementById("maxPriceContainer"); // ex: <div id="maxPriceContainer">
-  const priceContainer = document.getElementById("priceContainer");       // ex: <div id="priceContainer">
+  // Show correct price field based on type
+  const maxPriceContainer = document.getElementById("maxPriceContainer");
+  const priceContainer = document.getElementById("priceContainer");
 
   if (loggedInUser.type === "teacher") {
     priceContainer.style.display = "block";
     maxPriceContainer.style.display = "none";
 
-    // Preencher price
+    // fill price
     if (loggedInUser.price) {
       document.getElementById("price").value = loggedInUser.price;
     }
@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
     priceContainer.style.display = "none";
     maxPriceContainer.style.display = "block";
 
-    // Preencher maxPrice
+    // fill maxPrice
     if (loggedInUser.maxPrice) {
       document.getElementById("maxPrice").value = loggedInUser.maxPrice;
     }
   }
 
-  // Preencher dias disponíveis
+  // fill available days
   if (Array.isArray(loggedInUser.days)) {
     loggedInUser.days.forEach(day => {
       const checkbox = document.getElementById(`day${day}`);

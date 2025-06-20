@@ -37,13 +37,13 @@ export const BookSessionView = {
 
       callback(formData);
 
-      // Exibe a mensagem de confirmação
+      // confirmation message
       document.getElementById("confirmation").classList.remove("hidden");
       form.reset();
 
-      // Redireciona para studentHome.html após 1.5 segundos
+      // Redirect to studentHome.html after 1.5 seconds
       setTimeout(() => {
-        window.location.href = "studentHome.html"; // ajuste o caminho se necessário
+        window.location.href = "studentHome.html";
       }, 1500);
     });
   },

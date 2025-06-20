@@ -112,7 +112,7 @@ function showSection(sectionId) {
   }
 }
 
-// Avatar
+// Avatar sidebar toggle
 
 const avatarButton = document.getElementById("avatarButton");
 const sidebarMenu = document.getElementById("sidebarMenu");
@@ -130,9 +130,9 @@ window.addEventListener("click", function (e) {
   const logoutButton = document.getElementById("logoutButton");
 
   logoutButton.addEventListener("click", () => {
-    // Apagar todos os dados do localStorage
+    // Clear all localStorage data
     localStorage.clear();
 
-    // Redirecionar para a página de login (index.html)
+    // redirect to index.html
     window.location.href = "/index.html";
   });
