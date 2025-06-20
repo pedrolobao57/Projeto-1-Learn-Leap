@@ -115,32 +115,39 @@
       const card = document.createElement("div");
       card.className = "bg-white p-4 rounded-xl shadow border border-blue-200 flex flex-col justify-between";
       card.innerHTML = `
-        <div>
-          <div class="flex items-center gap-4">
-            <img src="/img/pfp.jpg" class="w-16 h-16 rounded-full object-cover" alt="Teacher Profile" />
-            <div>
-              <h2 class="text-xl font-bold text-blue-600">${teacher.name}</h2>
-              <p class="text-sm text-gray-600">${teacher.subject} • ${teacher.level}</p>
-            </div>
-          </div>
-          <ul class="mt-4 text-sm text-gray-700 space-y-1">
-            <li><i class="fa-solid fa-coins text-blue-500 mr-2"></i>€${teacher.price}</li>
-            <li><i class="fa-solid fa-map-marker-alt text-blue-500 mr-2"></i>${teacher.location}</li>
-            <li><i class="fa-solid fa-star text-yellow-400 mr-2"></i>${teacher.rating}/5</li>
-            <li><i class="fa-solid fa-clock text-blue-500 mr-2"></i>${teacher.days.join(", ")}</li>
-            <li><i class="fa-solid fa-user-graduate text-blue-500 mr-2"></i>${teacher.classType}</li>
-            <li><i class="fa-solid fa-info-circle text-blue-500 mr-2"></i>${teacher.description}</li>
-          </ul>
-        </div>
-        <div class="mt-4 flex gap-2">
-          <button class="flex-1 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
-            <img src="https://img.icons8.com/?size=100&id=59753&format=png&color=ffffff" class="w-5 h-5" alt="Chat"> Text
-          </button>
-          <button class="flex-1 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">
-            <img src="https://img.icons8.com/?size=100&id=238Ts6gRDGws&format=png&color=ffffff" class="w-5 h-5" alt="Call"> Call
-          </button>
-          <button class="book-now-btn flex-1 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition flex items-center justify-center gap-2">Book Now</button>
-        </div>
+        <div class="max-w-lg mx-auto bg-white rounded-2xl shadow-xl p-8 flex flex-col gap-8">
+  <div class="flex items-center gap-6">
+    <img src="/img/pfp.jpg" alt="Teacher Profile" class="w-24 h-24 rounded-full object-cover shadow-sm" />
+    <div>
+      <h2 class="text-3xl font-extrabold text-blue-600 leading-tight">${teacher.name}</h2>
+      <p class="mt-1 text-lg text-gray-700 tracking-wide">${teacher.subject} • ${teacher.level}</p>
+    </div>
+  </div>
+
+  <ul class="text-gray-800 space-y-4 text-base leading-relaxed font-medium">
+    <li class="flex items-center gap-3"><i class="fa-solid fa-coins text-blue-500 text-xl"></i> €${teacher.price}</li>
+    <li class="flex items-center gap-3"><i class="fa-solid fa-map-marker-alt text-blue-500 text-xl"></i> ${teacher.location}</li>
+    <li class="flex items-center gap-3"><i class="fa-solid fa-star text-yellow-400 text-xl"></i> ${teacher.rating}/5</li>
+    <li class="flex items-center gap-3"><i class="fa-solid fa-clock text-blue-500 text-xl"></i> ${teacher.days.join(", ")}</li>
+    <li class="flex items-center gap-3"><i class="fa-solid fa-user-graduate text-blue-500 text-xl"></i> ${teacher.classType}</li>
+    <li class="flex items-center gap-3"><i class="fa-solid fa-info-circle text-blue-500 text-xl"></i> ${teacher.description}</li>
+  </ul>
+
+  <div class="flex gap-4 ">
+    <button class="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition duration-300">
+      <img src="https://img.icons8.com/?size=100&id=59753&format=png&color=ffffff" class="w-4 h-4" alt="Chat" />
+      Text
+    </button>
+    <button class="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition duration-300">
+      <img src="https://img.icons8.com/?size=100&id=238Ts6gRDGws&format=png&color=ffffff" class="w-4 h-4" alt="Call" />
+      Call
+    </button>
+    <button class="book-now-btn flex-1 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition duration-300 font-semibold">
+      Book Now
+    </button>
+  </div>
+</div>
+
       `;
       container.appendChild(card);
     });

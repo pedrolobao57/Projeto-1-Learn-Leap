@@ -33,16 +33,18 @@ export const BookSessionView = {
       const time = document.getElementById("timeInput").value;
       const notes = document.getElementById("notes").value.trim();
 
-      const formData = {
-        day,
-        time,
-        notes,
-      };
+      const formData = { day, time, notes };
 
       callback(formData);
 
+      // Exibe a mensagem de confirmação
       document.getElementById("confirmation").classList.remove("hidden");
       form.reset();
+
+      // Redireciona para studentHome.html após 1.5 segundos
+      setTimeout(() => {
+        window.location.href = "studentHome.html"; // ajuste o caminho se necessário
+      }, 1500);
     });
   },
 
